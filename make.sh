@@ -5,6 +5,11 @@ echo "[INFO] Now going to make '$1'"
 
 cmdlist="pentex pentex-pkg"
 case $1 in
+    test2)
+        bash "$0" test
+        minoss docs/*.pdf
+        cfoss docs/*.pdf
+        ;;
     test)
         bash "$0" easy
         nomake=y h="npm:pentex-example-article" pentex docs/PenTeX.md
