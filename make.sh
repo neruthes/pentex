@@ -12,7 +12,7 @@ case $1 in
         ;;
     test)
         bash "$0" easy
-        nomake=y h="npm:pentex-example-article" pentex docs/PenTeX.md
+        nomake=y h="npm:pentex-example-article" pentex docs/PenTeX.md --toc --number-sections
         H="examples/pentexstd.H.tex" pentex docs/PenTeX.md --toc --number-sections
         ;;
     build)

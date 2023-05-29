@@ -10,6 +10,7 @@ if [[ -n "$h" ]]; then
     case "$pkg_reg" in
         npm)
             export PENTEX_HEADER_FILE="node_modules/$pkg_name/$pkg_name.H.tex"
+            echo "[INFO] Remember to run 'npm update' often to get lastest version of '$pkg_name'."
             if [[ ! -e "$PENTEX_HEADER_FILE" ]]; then
                 pentex-pkg get "$pkg_reg:$pkg_name"
             fi
