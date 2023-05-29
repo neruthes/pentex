@@ -14,6 +14,7 @@ case $1 in
         bash "$0" easy
         nomake=y h="npm:pentex-example-article" pentex docs/PenTeX.md --toc --number-sections
         H="examples/pentexstd.H.tex" pentex docs/PenTeX.md --toc --number-sections
+        # H="examples/pentexstd.H.tex" pentex docs/PenTeX.md --toc --number-sections -V "geometry=a3paper,landscape,textwidth=50em"
         ;;
     build)
         mkdir -p build
@@ -24,9 +25,13 @@ case $1 in
         done
         ;;
     install_home)
+        DEST="$HOME/.local/bin" bash "$0" install
+        ;;
+    install)
+        mkdir -p "$DEST"
         for cmd in $cmdlist; do
-            echo "[INFO] Installing script '$cmd' in '$HOME/.local/bin/$cmd'"
-            install -m755 "build/$cmd" "$HOME/.local/bin/$cmd"
+            echo "[INFO] Installing script '$cmd' in '$DEST/$cmd'"
+            install -m755 "build/$cmd" "$DEST/$cmd"
         done
         ;;
     easy)

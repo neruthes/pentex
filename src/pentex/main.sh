@@ -34,9 +34,9 @@ PANDOC_STD_ARGS=(
     -H "$PENTEX_HEADER_FILE"
     "--pdf-engine=xelatex"
     "--shift-heading-level-by=-1"
-    -V fontsize="$fontsize"
-    -V papersize="$papersize"
-    -V geometry="$geometry"
+    -V fontsize:"$fontsize"
+    -V papersize:"$papersize"
+    -V geometry:"$geometry"
 )
 
 
