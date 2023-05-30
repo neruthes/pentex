@@ -20,6 +20,8 @@ PenTeX is designed to fit into the gap.
 PenTeX is made for you if you are familiar with Markdown
 but typesetting is not what you are particularly interested in.
 
+The source code of PenTeX is available on [GitHub](https://github.com/neruthes/pentex).
+
 
 
 
