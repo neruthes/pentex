@@ -4,6 +4,10 @@ INPUT_PATH="$1"
 OUTPUT_PATH="$1.pdf"
 
 export PENTEX_HEADER_FILE="$H"
+# Default value when `h` and `H` are both empty
+if [[ -z "$h" ]] && [[ -z "$H" ]]; then
+    export h=std:article-std
+fi
 if [[ -n "$h" ]]; then
     pkg_reg="$(cut -d: -f1 <<< "$h")"
     pkg_name="$(cut -d: -f2 <<< "$h")"
@@ -15,11 +19,17 @@ if [[ -n "$h" ]]; then
                 pentex-pkg get "$pkg_reg:$pkg_name"
             fi
             ;;
+        std)
+            [[ "$NO_AUTO_INST" != y ]] && npm install pentex-std-lib
+            export PENTEX_HEADER_FILE="node_modules/pentex-std-lib/styles/$pkg_name.H.tex"
+            ;;
         *)
             echo "[ERROR] Un supported package registry '$pkg_reg'"
             ;;
     esac
 fi
+
+
 
 
 # Set default values

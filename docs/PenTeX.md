@@ -130,8 +130,13 @@ The full list of Pandoc arguments are available in [Pandoc User Manual](https://
 These environment variables control the behavior of `pentex`.
 
 - `nomake`: Set `y` to prevent automatic Pandoc invocation. Instead, print the generated command only.
+- `NO_AUTO_INST`: Set `y` to prevent automatic invocation of `npm install` when working with `std:` package registry.
 - `h`: Specify header from package.
 - `H`: Specify header from local file path.
+
+Extra notes:
+
+- If both `h` and `H` and empty, the default behavior is `h=std:article-std`.
 
 ### Metadata Environment Variables
 
@@ -195,6 +200,20 @@ Sample PDF: https://example.com/mypkg.md.pdf
 
 
 
+## Standard Library
+
+PenTeX Standard Library is separately maintained as another project [pentex-std-lib](https://github.com/neruthes/pentex-std-lib).
+
+To use a style in the standard library, you may use the `std` namespace as registry name.
+
+```sh
+h=std:article-std pentex MyDoc.md
+```
+
+Here is an incomplete list of available styles in the `std` registry:
+
+- `article-std`
+- `article-tech`
 
 
 
