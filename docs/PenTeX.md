@@ -146,7 +146,7 @@ These environment variables are passed as variables to Pandoc.
 | ----------- | ------------- |
 | `papersize` | A4            |
 | `fontsize`  | 11pt          |
-| `geometry`  | 35em          |
+| `geometry`  | textwidth=35em          |
 
 
 

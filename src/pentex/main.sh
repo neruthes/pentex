@@ -41,6 +41,8 @@ setdefault "fontsize" "11pt"
 setdefault "geometry" "textwidth=35em"
 
 PANDOC_STD_ARGS=(
+    --toc
+    -N
     -H "$PENTEX_HEADER_FILE"
     "--pdf-engine=xelatex"
     "--shift-heading-level-by=-1"
