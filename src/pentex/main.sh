@@ -47,4 +47,4 @@ function echo_and_run() {
     echo "$@"
     [[ "$nomake" != y ]] && "$@"
 }
-echo_and_run pandoc "${PANDOC_STD_ARGS[@]}" "$@" -i "$INPUT_PATH" -o "$OUTPUT_PATH"
+echo_and_run pandoc -i "$INPUT_PATH" -f gfm -o "$OUTPUT_PATH" "${PANDOC_STD_ARGS[@]}" "$@"

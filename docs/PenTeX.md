@@ -13,11 +13,11 @@ documentclass: "report"
 
 PenTeX is a package management frontend for Pandoc-compatible LaTeX [header files](https://pandoc.org/MANUAL.html#option--include-in-header).
 
-There are occasions when writing raw LaTeX is overkill and the Pandoc default style is not good enough.
+There are occasions when writing raw LaTeX is overkill, and the Pandoc default style is not good enough,
+and you do not want to spend too much time on tweaking the style.
 PenTeX is designed to fit into the gap.
 
-PenTeX is made for you if the following statement describes you well:
-you are familiar with Markdown since your work involves software development,
+PenTeX is made for you if you are familiar with Markdown
 but typesetting is not what you are particularly interested in.
 
 
@@ -30,9 +30,13 @@ but typesetting is not what you are particularly interested in.
 
 ### Dependencies
 
-In addition to Pandoc, we specifically require some dependencies:
+Here are the known dependencies:
 
+- Pandoc
 - TeX Live (2023 or later)
+
+Please note that some style packages may require specific fonts.
+Package maintainers should declare what fonts they require.
 
 ### Local Install
 
@@ -57,7 +61,7 @@ In your build script, run the following commands:
 ./make.sh install
 ```
 
-Note that you should pass `DEST` environment variable to make sure that artifact files are properly installed
+Note that you should pass `DEST` environment variable to make sure that artifact files (2 shell scripts) are properly installed
 to the prefixed directory.
 For example, you can declare `DEST=/dst114514/usr/bin` if the packager working prefix is `/dst114514`.
 
@@ -67,7 +71,7 @@ For example, you can declare `DEST=/dst114514/usr/bin` if the packager working p
 
 
 
-## Usage
+## Basic Usage
 
 ### Installing Header
 
@@ -83,11 +87,63 @@ pentex-pkg get npm:pentex-example-article
 h=npm:pentex-example-article pentex MyDoc.md
 ```
 
+If package is not already available, it will be downloaded.
+So you do not have to install it before running this command.
+
+Remember to run `npm update` frequently to make sure that you always use the latest version of the package.
+
 ### Using Header from File
 
 ```sh
 H=pentex-example-article.H.tex pentex MyDoc.md
 ```
+
+
+
+
+
+
+
+
+## Command Line Details
+
+### Arguments
+
+Specify the file path of the Markdown file:
+
+```sh
+H=example.H.tex pentex MyDoc.md
+```
+
+Pass verbatim extra arguments to Pandoc:
+
+```sh
+H=example.H.tex pentex MyDoc.md --toc --number-sections
+```
+
+The full list of Pandoc arguments are available in [Pandoc User Manual](https://pandoc.org/MANUAL.html).
+
+### Controlling Environment Variables
+
+These environment variables control the behavior of `pentex`.
+
+- `nomake`: Set `y` to prevent automatic Pandoc invocation. Instead, print the generated command only.
+- `h`: Specify header from package.
+- `H`: Specify header from local file path.
+
+### Metadata Environment Variables
+
+These environment variables are passed as variables to Pandoc.
+
+| Variable    | Default Value |
+| ----------- | ------------- |
+| `papersize` | A4            |
+| `fontsize`  | 11pt          |
+| `geometry`  | 35em          |
+
+
+
+
 
 
 
@@ -135,43 +191,6 @@ Sample PDF: https://example.com/mypkg.md.pdf
 
 
 
-
-
-
-
-## Command Line Details
-
-### Arguments
-
-Specify the file path of the Markdown file:
-
-```sh
-H=example.H.tex pentex MyDoc.md
-```
-
-Pass verbatim extra arguments to Pandoc:
-
-```sh
-H=example.H.tex pentex MyDoc.md --toc --number-sections
-```
-
-### Controlling Environment Variables
-
-These environment variables control the behavior of `pentex`.
-
-- `nomake`: Set `y` to prevent automatic Pandoc invocation. Instead, print the generated command only.
-- `h`: Specify header from package. If package is not already available, it will be downloaded.
-- `H`: Specify header from local file path.
-
-### Metadata Environment Variables
-
-These environment variables are passed as variables to Pandoc.
-
-| Variable    | Default Value |
-| ----------- | ------------- |
-| `papersize` | A4            |
-| `fontsize`  | 11pt          |
-| `geometry`  | 35em          |
 
 
 
