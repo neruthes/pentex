@@ -1,0 +1,24 @@
+{
+  "name": "pentex",
+  "version": "1.0.0",
+  "description": "Pandoc wrapper for flexible template package management",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "example": "examples"
+  },
+  "dependencies": {
+    "pentex-example-article": "^1.0.7",
+    "pentex-std-lib": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo no test"
+  },
+  "author": "Neruthes",
+  "license": "GPL-2.0-only",
+  "bin": {
+    "pentex": "build/pentex",
+    "pentex-pkg": "build/pentex-pkg"
+  }
+}
