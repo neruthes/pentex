@@ -20,11 +20,13 @@ if [[ -n "$h" ]]; then
             fi
             ;;
         std)
-            [[ "$NO_AUTO_INST" != y ]] && npm install pentex-std-lib
             export PENTEX_HEADER_FILE="node_modules/pentex-std-lib/styles/$pkg_name.H.tex"
+            if [[ "$NO_AUTO_INST" != y ]]; then
+                [[ ! -e "$PENTEX_HEADER_FILE" ]] && npm install pentex-std-lib
+            fi
             ;;
         *)
-            echo "[ERROR] Un supported package registry '$pkg_reg'"
+            echo "[ERROR] Unsupported package registry '$pkg_reg'"
             ;;
     esac
 fi
@@ -35,6 +37,7 @@ fi
 # Set default values
 function setdefault () {
     [[ -z "${!1}" ]] && export "$1"="$2"
+    [[ '!' == "${!1}" ]] && unset "$1"
 }
 setdefault "papersize" "A4"
 setdefault "fontsize" "11pt"

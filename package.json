@@ -1,6 +1,6 @@
 {
   "name": "pentex",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Pandoc wrapper for flexible template package management",
   "main": "index.js",
   "directories": {
